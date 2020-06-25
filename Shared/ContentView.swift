@@ -10,8 +10,9 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            ListOfTasks()
+            MainPage()
         }
+        
     }
 }
 
@@ -21,18 +22,37 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+struct MainPage: View {
+    var body: some View {
+        NavigationView {
+            List(0 ..< 3) { item in
+                NavigationLink(destination: ListOfTasks()) {
+                    Text("Placeholder")
+                }
+            }
+            .navigationTitle("Cubby")
+        }
+    }
+}
+
 struct ListOfTasks: View {
     var body: some View {
         List(/*@START_MENU_TOKEN@*/0 ..< 5/*@END_MENU_TOKEN@*/) { item in
             NavigationLink( destination: Text("Hi there!")) {
                 Image(systemName: "circle")
-                VStack {
+                    .padding(.trailing)
+                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                VStack() {
                     Text("Task").padding()
                     Text("Task Type")
+                        .font(.subheadline)
+                        .foregroundColor(Color.gray)
+                        .multilineTextAlignment(.leading)
                 }
             }
             
         }
+        .padding()
         .navigationTitle("Tasks")
     }
 }
