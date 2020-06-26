@@ -15,6 +15,10 @@
 		79CD0CD724A455FB006060C8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CD0CAC24A455F7006060C8 /* ContentView.swift */; };
 		79CD0CD824A455FB006060C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79CD0CAD24A455FB006060C8 /* Assets.xcassets */; };
 		79CD0CD924A455FB006060C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79CD0CAD24A455FB006060C8 /* Assets.xcassets */; };
+		79CD0CEB24A59CDF006060C8 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CD0CEA24A59CDF006060C8 /* Page.swift */; };
+		79CD0CEC24A59CDF006060C8 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CD0CEA24A59CDF006060C8 /* Page.swift */; };
+		79CD0CF124A5ABBF006060C8 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CD0CF024A5ABBF006060C8 /* ToDo.swift */; };
+		79CD0CF224A5ABBF006060C8 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CD0CF024A5ABBF006060C8 /* ToDo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,8 @@
 		79CD0CCD24A455FB006060C8 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79CD0CD124A455FB006060C8 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		79CD0CD324A455FB006060C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79CD0CEA24A59CDF006060C8 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		79CD0CF024A5ABBF006060C8 /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +104,7 @@
 		79CD0CAA24A455F7006060C8 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				79CD0CE924A59CB9006060C8 /* Models */,
 				79CD0CAB24A455F7006060C8 /* CubbyApp.swift */,
 				79CD0CAC24A455F7006060C8 /* ContentView.swift */,
 				79CD0CAD24A455FB006060C8 /* Assets.xcassets */,
@@ -149,6 +156,15 @@
 				79CD0CD324A455FB006060C8 /* Info.plist */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		79CD0CE924A59CB9006060C8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				79CD0CEA24A59CDF006060C8 /* Page.swift */,
+				79CD0CF024A5ABBF006060C8 /* ToDo.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,7 +325,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				79CD0CD624A455FB006060C8 /* ContentView.swift in Sources */,
+				79CD0CF124A5ABBF006060C8 /* ToDo.swift in Sources */,
 				79CD0CD424A455FB006060C8 /* CubbyApp.swift in Sources */,
+				79CD0CEB24A59CDF006060C8 /* Page.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +336,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				79CD0CD724A455FB006060C8 /* ContentView.swift in Sources */,
+				79CD0CF224A5ABBF006060C8 /* ToDo.swift in Sources */,
 				79CD0CD524A455FB006060C8 /* CubbyApp.swift in Sources */,
+				79CD0CEC24A59CDF006060C8 /* Page.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

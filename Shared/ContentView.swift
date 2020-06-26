@@ -10,7 +10,6 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         MainPage()
-        
     }
 }
 
@@ -34,21 +33,20 @@ struct MainPage: View {
 }
 
 struct ListOfTasks: View {
+    var toDoTasks : ToDoStore = ToDoStore()
     var body: some View {
-        List(/*@START_MENU_TOKEN@*/0 ..< 5/*@END_MENU_TOKEN@*/) { item in
-            NavigationLink( destination: Text("Hi there!")) {
-                Image(systemName: "circle")
-                    .padding(.trailing)
-                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                VStack() {
-                    Text("Task").padding()
-                    Text("Task Type")
-                        .font(.subheadline)
-                        .foregroundColor(Color.gray)
-                        .multilineTextAlignment(.leading)
+        List {
+            ForEach(toDoTasks.tasks) { task in
+                NavigationLink( destination: Text("Hi there!")) {
+                    Image(systemName: "circle")
+                        .padding(.trailing)
+                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                    VStack() {
+                        Text(task.description).padding()
+                    }
                 }
+                
             }
-            
         }
         .padding()
         .navigationTitle("Tasks")
