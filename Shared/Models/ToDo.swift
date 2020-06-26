@@ -30,7 +30,12 @@ class ToDo : PageType {
 class ToDoStore : ObservableObject {
     
     //Variables
-    @Published var tasks : [Task] = []
+    @Published var tasks : [Task]
+    
+    init() {
+        tasks = []
+        self.addTask("Hello")
+    }
     
     func addTask (_ taskDescrip : String) {
         tasks.append(Task(taskDescrip))
