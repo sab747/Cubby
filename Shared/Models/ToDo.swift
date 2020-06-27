@@ -53,16 +53,38 @@ class ToDoStore : ObservableObject {
  
  Holds one to-do task
  */
-struct Task : Identifiable, Equatable {
+class Task : Identifiable, Equatable, ObservableObject {
     
     //Parameters
     var id: UUID //unique identifier
     var description : String //to-do task
+    var completed : Bool
+    var titled : Bool
     //TO-DO (hahahahah) : add more details so that user can click on task and see more
     
     //Constructor
     init (_ description : String) {
         self.description = description
         self.id = UUID()
+        self.completed = false
+        self.titled = false
     }
+    
+    static func == (lhs: Task, rhs: Task) -> Bool {
+        if lhs.id == rhs.id {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    func updateDescription (_ newName : String) {
+        self.description = newName
+    }
+    
+   func toggleTitle () {
+        titled.toggle()
+    }
+    
 }

@@ -8,8 +8,52 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @Environment (\.managedObjectContext) var moc
+    @FetchRequest(entity: ToDoList.entity(), sortDescriptors:[]) var lists: FetchedResults<ToDoList>
+    
     var body: some View {
-        MainPage()
+        NavigationView {
+            List {
+                if lists.isEmpty {
+                    Text("No Lists - Please add a list")
+                }
+                ForEach(lists) { tdList in
+                    NavigationLink(destination: ListOfTasks().environment(\.managedObjectContext, self.moc)) {
+                        Text(tdList.name!)
+                    }
+                }.onDelete(perform: removeList)
+            }
+            .navigationBarTitle("Cubby")
+            .navigationBarItems(trailing: Button(action: {addList()},
+                label: {
+                Image(systemName: "plus")
+            }))
+        }
+    }
+    
+    func addList () {
+        let newList = ToDoList(context: moc)
+        newList.id = UUID()
+        newList.name = "New list"
+        
+        do {
+            try moc.save()
+        } catch {
+            print(error)
+        }
+    }
+    
+    func removeList (at offsets: IndexSet) {
+        for index in offsets {
+        let tdList = lists[index]
+                moc.delete(tdList)
+        }
+        do {
+            try moc.save()
+        } catch {
+            print(error)
+        }
     }
 }
 
@@ -27,28 +71,28 @@ struct MainPage: View {
                     Text("Placeholder")
                 }
             }
-            .navigationTitle("Cubby")
+            .navigationBarTitle("Cubby")
         }
     }
 }
 
 struct ListOfTasks: View {
-    var toDoTasks : ToDoStore = ToDoStore()
+    @ObservedObject var toDoTasks : ToDoStore = ToDoStore()
+    @State private var descrip: String = "Tim"
     var body: some View {
         List {
             ForEach(toDoTasks.tasks) { task in
-                NavigationLink( destination: Text("Hi there!")) {
-                    Image(systemName: "circle")
-                        .padding(.trailing)
-                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                    VStack() {
-                        Text(task.description).padding()
-                    }
-                }
-                
+                taskRowCell(task: task)
             }
         }
         .padding()
-        .navigationTitle("Tasks")
+        .navigationBarTitle("Tasks")
+        .navigationBarItems(trailing: Button(action: {
+            toDoTasks.addTask("New Task")
+        }) {
+            Image(systemName: "plus")
+        })
     }
 }
+
+
